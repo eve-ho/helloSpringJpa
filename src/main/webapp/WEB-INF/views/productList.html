@@ -119,6 +119,11 @@
             </tr>
         </tbody>
     </table>
-
+    <footer style="margin-top: 40px; padding: 20px; border-top: 1px solid #ddd; font-size: 13px; color: #666; text-align: center;">
+        <p>
+            실습 수행 일시: <span th:text="${#temporals.format(#temporals.createNow(), 'yyyy년 MM월 dd일 (E) a HH:mm:ss')}"></span>
+            &nbsp;|&nbsp; 학번: 2171440 &nbsp;|&nbsp; 성명: 김호진
+        </p>
+    </footer>
 </body>
 </html>
