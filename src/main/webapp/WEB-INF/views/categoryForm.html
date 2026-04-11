@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>카테고리 등록</title>
+</head>
+<body>
+<h1>카테고리 등록</h1>
+
+<form th:action="@{/categories/create}" th:object="${categoryForm}" method="post">
+  <div>
+    <label>카테고리 이름:</label>
+    <input type="text" th:field="*{name}" placeholder="카테고리 이름 입력"/>
+    <span th:errors="*{name}" style="color:red"></span>
+  </div>
+  <br>
+  <button type="submit">등록</button>
+  <a th:href="@{/categories}">취소</a>
+</form>
+
+<hr>
+<footer style="margin-top: 40px; padding: 20px; border-top: 1px solid #ddd; font-size: 13px; color: #666; text-align: center;">
+  <p>
+    실습 수행 일시: <span th:text="${#temporals.format(#temporals.createNow(), 'yyyy년 MM월 dd일 (E) a HH:mm:ss')}"></span>
+    &nbsp;|&nbsp; 학번: 2171440 &nbsp;|&nbsp; 성명: 김호진
+  </p>
+</footer>
+</body>
+</html>

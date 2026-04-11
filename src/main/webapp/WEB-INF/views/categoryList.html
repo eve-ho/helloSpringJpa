@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>카테고리 목록</title>
+</head>
+<body>
+<h1>카테고리 목록</h1>
+
+<div th:if="${successMessage}" style="color: blue;" th:text="${successMessage}"></div>
+<div th:if="${errorMessage}" style="color: red;" th:text="${errorMessage}"></div>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>카테고리명</th>
+    <th>작업</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="cat : ${categories}">
+    <td th:text="${cat.id}"></td>
+    <td th:text="${cat.name}"></td>
+    <td>
+      <form th:action="@{/categories/{id}/delete(id=${cat.id})}" method="post">
+        <button type="submit" onclick="return confirm('정말 삭제하시겠습니까?')">삭제</button>
+      </form>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<br>
+<a th:href="@{/categories/create}">새 카테고리 등록</a>
+<br>
+<a th:href="@{/products}">상품 목록으로 돌아가기</a>
+
+<hr>
+<footer style="margin-top: 40px; padding: 20px; border-top: 1px solid #ddd; font-size: 13px; color: #666; text-align: center;">
+  <p>
+    실습 수행 일시: <span th:text="${#temporals.format(#temporals.createNow(), 'yyyy년 MM월 dd일 (E) a HH:mm:ss')}"></span>
+    &nbsp;|&nbsp; 학번: 2171440 &nbsp;|&nbsp; 성명: 김호진
+  </p>
+</footer>
+</body>
+</html>
